@@ -22,8 +22,8 @@ using namespace llvm;
 
 class DeadCodeAnalysis: public FunctionPass {
 private:
-  vector<BranchInst*> worklist;
-  map<BranchInst*, bool> workListMap;
+  typedef std::pair<ICmpInst*, bool> Tuple;
+  map<BranchInst*, Tuple> workListMap;
 
 public:
   static char ID;
@@ -31,7 +31,6 @@ public:
   virtual ~DeadCodeAnalysis() {
   }
 
-  void createBranchInst();
   void eliminateUnreacheableBlock();
   void createNonTerminatorUnreachable(Instruction* InsertAt);
   int solveIcmpInstruction(ICmpInst* iCmpInst, InterProceduralRA<Cousot> &ra);
