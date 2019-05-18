@@ -6,7 +6,8 @@
 // This file is distributed under the University of Illinois Open Source
 // License. See LICENSE.TXT for details.
 //
-// Copyright (C) 2011-2012, 2015    Victor Hugo Sperle Campos
+// Copyright (C) 2019               Angélica Moreira
+//               2011-2012, 2015    Victor Hugo Sperle Campos
 //               2011               Douglas do Couto Teixeira
 //               2012               Igor Rafael de Assis Costa
 //

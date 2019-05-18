@@ -12,8 +12,8 @@
 #include <cstdio>
 #include <cstdlib>
 #include <string>
-#include <list>
 #include <map>
+#include <vector>
 
 #include "RangeAnalysis.h"
 
@@ -22,12 +22,8 @@ using namespace llvm;
 
 class DeadCodeAnalysis: public FunctionPass {
 private:
-  map<Value*, string> valuesMap;
-  list<string> successorsList;
-  int instrCount= 0;
-  static const string BASIC_BLOCK_PREFIX;
-  static const string INSTRUCTION_PREFIX;
-  static const string FUNCTION_PREFIX;
+  vector<BranchInst*> worklist;
+  map<BranchInst*, bool> workListMap;
 
 public:
   static char ID;
@@ -35,6 +31,10 @@ public:
   virtual ~DeadCodeAnalysis() {
   }
 
+  void createBranchInst();
+  void eliminateUnreacheableBlock();
+  void createNonTerminatorUnreachable(Instruction* InsertAt);
+  int solveIcmpInstruction(ICmpInst* iCmpInst, InterProceduralRA<Cousot> &ra);
   virtual void getAnalysisUsage(AnalysisUsage &AU) const;
   virtual bool runOnFunction(Function &function);
 };

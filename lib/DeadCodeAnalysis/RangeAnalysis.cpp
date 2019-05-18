@@ -19,24 +19,24 @@
 using namespace llvm;
 
 // These macros are used to get stats regarding the precision of our analysis.
-STATISTIC(usedBits, "Initial number of bits.");
-STATISTIC(needBits, "Needed bits.");
-STATISTIC(percentReduction, "Percentage of reduction of the number of bits.");
-STATISTIC(numSCCs, "Number of strongly connected components.");
-STATISTIC(numAloneSCCs, "Number of SCCs containing only one node.");
-STATISTIC(sizeMaxSCC, "Size of largest SCC.");
+STATISTIC(usedBits, "Initial number of bits");
+STATISTIC(needBits, "Needed bits");
+STATISTIC(percentReduction, "Percentage of reduction of the number of bits");
+STATISTIC(numSCCs, "Number of strongly connected components");
+STATISTIC(numAloneSCCs, "Number of SCCs containing only one node");
+STATISTIC(sizeMaxSCC, "Size of largest SCC");
 STATISTIC(numVars, "Number of variables");
 STATISTIC(numUnknown, "Number of unknown variables");
 STATISTIC(numEmpty, "Number of empty-set variables");
-STATISTIC(numCPlusInf, "Number of variables [c, +inf].");
-STATISTIC(numCC, "Number of variables [c, c].");
-STATISTIC(numMinInfC, "Number of variables [-inf, c].");
-STATISTIC(numMaxRange, "Number of variables [-inf, +inf].");
-STATISTIC(numConstants, "Number of constants.");
-STATISTIC(numZeroUses, "Number of variables without any use.");
-STATISTIC(numNotInt, "Number of variables that are not Integer.");
+STATISTIC(numCPlusInf, "Number of variables [c, +inf]");
+STATISTIC(numCC, "Number of variables [c, c]");
+STATISTIC(numMinInfC, "Number of variables [-inf, c]");
+STATISTIC(numMaxRange, "Number of variables [-inf, +inf]");
+STATISTIC(numConstants, "Number of constants");
+STATISTIC(numZeroUses, "Number of variables without any use");
+STATISTIC(numNotInt, "Number of variables that are not Integer");
 STATISTIC(numOps, "Number of operations");
-STATISTIC(maxVisit, "Max number of times a value has been visited.");
+STATISTIC(maxVisit, "Max number of times a value has been visited");
 
 
 // The number of bits needed to store the largest variable of the function

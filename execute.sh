@@ -25,7 +25,6 @@ program_file=$2
 program_file_name=$(basename -- "$2")
 extension=${program_file_name#*.}
 program_file_name=${program_file_name%.*}
-
 pass_path="$(dirname "$script_path")"
 dead_code_analysis=${script_path}/build/libDeadCodeAnalysis.$suffix
 
@@ -57,17 +56,11 @@ function load(){
   echo "====== Loading some optimizations ========"
   opt -mem2reg -instnamer -mem2reg -break-crit-edges $program_ll -S -o $program_ll
 
-  echo "====== Loading Range Analysis pass ======="
-  #opt -load $range_analysis -vssa -client-ra $program_ll -S -o $program_ll
-  opt -load $dead_code_analysis -vssa -dead-code-ra -S -o=$program_ll < $program_ll
-
-  #echo "Loading Dead Code Elimination Analysis pass."
-  #opt -load $dead_code_analysis -dead-code-elimination-analysis -S -o=$program_ll < $program_ll
+  echo "====== Loading Dead Code Elimination Analysis pass with some auxiliary passes ======="
+  opt -load $dead_code_analysis -vssa -dead-code-ra -simplifycfg -stats -S -o=$program_ll < $program_ll
 
   echo "===== Generating the cfg.dot files ======="
   opt --dot-cfg $program_ll -disable-output
-
-  echo "===== The dot files were generated ======="
 }
 
 cd $directory_name
