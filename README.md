@@ -33,6 +33,7 @@ int foo(int k) {
 In this example, the return statement could be simplified to return i, because the variable i is within the bounds [0, 1]. Your pass must be able to eliminate obviously redundant code, like the branch in the first example. Of course, it is difficult to determine everything that must be eliminated, as a more advanced dead-code elimination pass can do more than a naive implementation. In order to know if your code is good enough, we may try it on a few examples, and you must reduce at least half of them. Your pass must print a few statistics:
 
 Number of instructions eliminated
+
 Number of basic blocks entirely eliminated
 
 You can obtain them using the LLVM's stats option. You will need to add some code like these lines below into your pass:
@@ -40,7 +41,11 @@ STATISTIC(InstructionsEliminated, "Number of instructions eliminated");
 STATISTIC(BasicBlocksEliminated,  "Number of basic blocks entirely eliminated");
 In the end, your pass must be able to convert a bytecode like the one on the left into something like the bytecode on the right:
  
- Example before dead-code elimination.	 Example after dead-code elimination
+ https://homepages.dcc.ufmg.br/~fernando/classes/dcc888/assignment/images/originalProg.png
+ Example before dead-code elimination.	 
+ 
+ https://homepages.dcc.ufmg.br/~fernando/classes/dcc888/assignment/images/optimizedProg.png
+ Example after dead-code elimination
  
 Feel free to use as much help from LLVM as you want. In particular, you may find procedures like RecursivelyDeleteTriviallyDeadInstructions, available in llvm/Transforms/Utils/Local.h, very useful. Just to help you a bit more, below you have a piece of code that does what you will be doing all the time in this assignment:
 
