@@ -1,0 +1,12 @@
+digraph "CFG for '_Z3foov' function" {
+	label="CFG for '_Z3foov' function";
+
+	Node0x7f9bbe42a090 [shape=record,label="{entry:\l  br label %for.cond\l}"];
+	Node0x7f9bbe42a090 -> Node0x7f9bbe42a210;
+	Node0x7f9bbe42a210 [shape=record,label="{for.cond:                                         \l  %sum.0 = phi i32 [ 0, %entry ], [ %add, %for.body ]\l  %i.0 = phi i32 [ 0, %entry ], [ %inc, %for.body ]\l  %cmp = icmp slt i32 %i.0, 100\l  br i1 %cmp, label %for.body, label %for.end\l|{<s0>T|<s1>F}}"];
+	Node0x7f9bbe42a210:s0 -> Node0x7f9bbe42a340;
+	Node0x7f9bbe42a210:s1 -> Node0x7f9bbe42a6d0;
+	Node0x7f9bbe42a340 [shape=record,label="{for.body:                                         \l  %vSSA_sigma = phi i32 [ %i.0, %for.cond ]\l  %add = add nsw i32 %sum.0, %vSSA_sigma\l  %inc = add nsw i32 %vSSA_sigma, 1\l  br label %for.cond\l}"];
+	Node0x7f9bbe42a340 -> Node0x7f9bbe42a210;
+	Node0x7f9bbe42a6d0 [shape=record,label="{for.end:                                          \l  ret i32 %sum.0\l}"];
+}

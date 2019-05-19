@@ -1,0 +1,5 @@
+digraph "CFG for '_Z3fooi' function" {
+	label="CFG for '_Z3fooi' function";
+
+	Node0x7f8a23d15ec0 [shape=record,label="{entry:\l  %inc = add nsw i32 0, 1\l  %and = and i32 %inc, 1\l  ret i32 %and\l}"];
+}
