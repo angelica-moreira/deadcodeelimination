@@ -1,4 +1,4 @@
-# deadcodeelimination
+# DeadCodeElimination
 
 This is the resolution of the second project of the class Static Analysis and below is the description of the project.
 
