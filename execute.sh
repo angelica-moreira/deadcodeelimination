@@ -60,11 +60,32 @@ function load(){
   opt -load $dead_code_analysis -vssa -dead-code-ra -simplifycfg -stats -S -o=$program_ll < $program_ll
 
   echo "===== Generating the cfg.dot files ======="
-  opt --dot-cfg $program_ll -disable-output
+  opt -dot-cfg $program_ll -disable-output
 }
+
+#move all dot files to the program_dot_files_generated                          
+function moveFiles(){                                                           
+  #It creates a directory that will be the repository for all dot files         
+  directory_name_dot_files=${script_path}/dot_files                             
+  if [ ! -d "$directory_name_dot_files" ]; then                                 
+      mkdir -p $directory_name_dot_files                                        
+  fi                                                                            
+                                                                                
+  #It creates a directory that will be the repository for the dot files of the current program
+  directory_name_program_dot_files=${directory_name_dot_files}/${program_file_name}
+  if [ ! -d "$directory_name_program_dot_files" ]; then                         
+      mkdir -p $directory_name_program_dot_files                                
+  fi                                                                    
+                                                                                
+  #In case the dot files of the current code exists move it to the correct directory
+  echo "Moving the generated dot files to the folder ${directory_name_program_dot_files}"
+  cp .*.dot $directory_name_program_dot_files                                    
+  rm -f .*.dot                                                                   
+}    
 
 cd $directory_name
 clean ;
 cd $script_path
 compile ;
 load ;
+moveFiles ; 
