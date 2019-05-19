@@ -41,11 +41,15 @@ STATISTIC(InstructionsEliminated, "Number of instructions eliminated");
 STATISTIC(BasicBlocksEliminated,  "Number of basic blocks entirely eliminated");
 In the end, your pass must be able to convert a bytecode like the one on the left into something like the bytecode on the right:
  
- https://homepages.dcc.ufmg.br/~fernando/classes/dcc888/assignment/images/originalProg.png
- Example before dead-code elimination.	 
+Example before dead-code elimination: 
+
+https://homepages.dcc.ufmg.br/~fernando/classes/dcc888/assignment/images/originalProg.png
+ 	 
  
- https://homepages.dcc.ufmg.br/~fernando/classes/dcc888/assignment/images/optimizedProg.png
- Example after dead-code elimination
+Example after dead-code elimination:
+ 
+https://homepages.dcc.ufmg.br/~fernando/classes/dcc888/assignment/images/optimizedProg.png
+ 
  
 Feel free to use as much help from LLVM as you want. In particular, you may find procedures like RecursivelyDeleteTriviallyDeadInstructions, available in llvm/Transforms/Utils/Local.h, very useful. Just to help you a bit more, below you have a piece of code that does what you will be doing all the time in this assignment:
 
